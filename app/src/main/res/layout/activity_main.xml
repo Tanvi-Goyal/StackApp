@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <fragment
+        <FrameLayout
             android:id="@+id/first"
             android:name="com.stackapp.FirstFragment"
             android:layout_width="match_parent"
@@ -19,20 +19,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <fragment
+        <FrameLayout
             android:id="@+id/second"
             android:name="com.stackapp.SecondFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <include
+        <FrameLayout
             android:id="@+id/third"
-            layout="@layout/fragment_third"
-            android:visibility="gone"
+            android:name="com.stackapp.ThirdFragment"
+            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"

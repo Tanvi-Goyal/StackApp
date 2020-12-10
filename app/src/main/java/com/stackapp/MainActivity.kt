@@ -1,19 +1,36 @@
 package com.stackapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.stackapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), FragmentListener {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: StackAdapter
+
+    private var fragmentOne = FirstFragment()
+    private var fragmentTwo = SecondFragment()
+    private var fragmentThree = ThirdFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+
+        supportFragmentManager.beginTransaction()
+            .add(binding.first.id, fragmentOne)
+            .commit()
+
+        supportFragmentManager.beginTransaction()
+            .add(binding.second.id, fragmentTwo)
+            .commit()
+
+        supportFragmentManager.beginTransaction()
+            .add(binding.third.id, fragmentThree)
+            .addToBackStack("third").commit()
         /*
         Tasks
         1. ist fragment in expanded view
@@ -32,5 +49,82 @@ class MainActivity : AppCompatActivity() {
         5. All view are expanded and click on 2nd view
             animate 3rd view and collapse
          */
+    }
+
+    override fun onAttachFragment(fragment: Fragment) {
+        when (fragment) {
+            is FirstFragment -> fragment.setFragmentListener(this)
+            is SecondFragment -> fragment.setFragmentListener(this)
+            is ThirdFragment -> fragment.setFragmentListener(this)
+        }
+    }
+
+    override fun showUpperCollapsedState(fragmentType: String) {
+        when (fragmentType) {
+
+            AppConstants.FIRST_FRAGMENT -> {
+                fragmentOne.showUpperCollapsedState()
+            }
+            AppConstants.SECOND_FRAGMENT -> {
+                fragmentTwo.showUpperCollapsedState()
+            }
+            AppConstants.THIRD_FRAGMENT -> {
+                fragmentThree.showUpperCollapsedState()
+            }
+        }
+    }
+
+    override fun showBottomCollapsedState(fragmentType: String) {
+        when (fragmentType) {
+
+            AppConstants.FIRST_FRAGMENT -> {
+                fragmentOne.showBottomCollapsedState()
+            }
+            AppConstants.SECOND_FRAGMENT -> {
+                fragmentTwo.showBottomCollapsedState()
+            }
+            AppConstants.THIRD_FRAGMENT -> {
+                fragmentThree.showBottomCollapsedState()
+            }
+        }
+    }
+
+    override fun showExpandedState(fragmentType: String) {
+        when (fragmentType) {
+
+            AppConstants.FIRST_FRAGMENT -> {
+                fragmentOne.showExpandedState()
+            }
+            AppConstants.SECOND_FRAGMENT -> {
+                fragmentTwo.showExpandedState()
+            }
+            AppConstants.THIRD_FRAGMENT -> {
+                fragmentThree.showExpandedState()
+            }
+        }
+    }
+
+    override fun hideBottomCollapsedState(fragmentType: String) {
+        fragmentThree.hideCollapsedState()
+    }
+
+    override fun onBackPressed() {
+        when {
+            fragmentThree.isExpanded -> {
+                fragmentThree.showBottomCollapsedState()
+                fragmentTwo.showExpandedState()
+            }
+            fragmentTwo.isExpanded -> {
+                fragmentThree.hideCollapsedState()
+                fragmentTwo.showBottomCollapsedState()
+                fragmentOne.showExpandedState()
+            }
+            fragmentOne.isExpanded -> {
+                super.onBackPressed()
+            }
+        }
+
+//        super.onBackPressed()
+
     }
 }
