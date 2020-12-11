@@ -22,9 +22,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_20sdp"
                 android:fontFamily="@font/gilroy_bold"
+                android:visibility="visible"
                 android:text="nikunj, how much do you need? "
                 android:textColor="#8798a6"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,9 +36,10 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginRight="@dimen/_50sdp"
                 android:fontFamily="@font/gilroy_medium"
+                android:visibility="visible"
                 android:text="move the dial and set any amount you need upto Rs. 487,391"
                 android:textColor="#4a525a"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/txtTitle"
                 app:layout_constraintTop_toBottomOf="@id/txtTitle" />
@@ -74,6 +76,32 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:id="@+id/labelCreditAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="credit amount"
+                android:visibility="gone"
+                android:textSize="@dimen/_11ssp"
+                android:textColor="#2e303a"
+                android:layout_margin="@dimen/_20sdp"
+                android:fontFamily="@font/gilroy_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/valueCreditAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/labelCreditAmount"
+                app:layout_constraintStart_toStartOf="@id/labelCreditAmount"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="Rs. 1,500,000"
+                android:visibility="gone"
+                android:textColor="#2f343e"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/gilroy_bold"/>
+
             <ImageView
                 android:id="@+id/imgExpand"
                 android:layout_width="wrap_content"
@@ -92,55 +120,5 @@
             <!--                android:visibility="gone"/>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:visibility="gone"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            android:background="@drawable/bg_first_fragment">-->
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/txtCTitle"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_margin="@dimen/_20sdp"-->
-        <!--                android:text="Nikunj, how much do you need? "-->
-        <!--                android:textColor="@color/white"-->
-        <!--                android:textSize="@dimen/_12sdp"-->
-        <!--                app:layout_constraintStart_toStartOf="parent"-->
-        <!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/txtCDescription"-->
-        <!--                android:layout_width="0dp"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginTop="@dimen/_5sdp"-->
-        <!--                android:layout_marginEnd="@dimen/_50sdp"-->
-        <!--                android:layout_marginRight="@dimen/_50sdp"-->
-        <!--                android:layout_marginBottom="@dimen/_10sdp"-->
-        <!--                android:text="move the dial and set any amount you need upto Rs. 300000"-->
-        <!--                android:textColor="@color/white"-->
-        <!--                android:textSize="@dimen/_10sdp"-->
-        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--                app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                app:layout_constraintHorizontal_bias="0.0"-->
-        <!--                app:layout_constraintStart_toStartOf="@id/txtCTitle"-->
-        <!--                app:layout_constraintTop_toBottomOf="@id/txtCTitle"-->
-        <!--                app:layout_constraintVertical_bias="0.0" />-->
-
-        <!--            <ImageView-->
-        <!--                android:id="@+id/imgCExpand"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginRight="@dimen/_30sdp"-->
-        <!--                android:src="@drawable/ic_baseline_expand_more_24"-->
-        <!--                android:visibility="gone"-->
-        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--                app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                app:layout_constraintTop_toTopOf="parent" />-->
-        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
