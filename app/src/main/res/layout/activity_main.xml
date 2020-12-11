@@ -6,6 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/black"
         tools:context=".MainActivity">
 
         <FrameLayout
@@ -13,11 +14,11 @@
             android:name="com.stackapp.FirstFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <FrameLayout
             android:id="@+id/second"
@@ -32,9 +33,9 @@
         <FrameLayout
             android:id="@+id/third"
             android:name="com.stackapp.ThirdFragment"
-            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
