@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_30sdp"
                 android:src="@drawable/ic_baseline_expand_more_24"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/txtDescription"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

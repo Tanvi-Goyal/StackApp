@@ -1,11 +1,16 @@
 package com.stackapp
 
+import android.animation.LayoutTransition
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
 import androidx.fragment.app.Fragment
 import com.stackapp.databinding.FragmentSecondBinding
+
 
 class SecondFragment : Fragment() {
 
@@ -31,15 +36,92 @@ class SecondFragment : Fragment() {
             showExpandedState()
             fragmentListener.showUpperCollapsedState(AppConstants.FIRST_FRAGMENT)
             fragmentListener.showBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
+
+//            binding.stateCollapsed.visibility = View.GONE
+//            binding.stateExpanded.visibility = View.VISIBLE
+
+//            binding.stateExpanded.animate()
+//                .translationY(0f)
+//                .alpha(1.0f)
+//                .setDuration(500)
+//                .setListener(object : AnimatorListenerAdapter() {
+//                    override fun onAnimationEnd(animation: Animator?) {
+//                        super.onAnimationEnd(animation)
+//
+//                        binding.stateExpanded.clearAnimation()
+////                        Handler().postDelayed({ binding.focusedBtn.clearFocus() }, 10)
+////                        Handler().postDelayed({ binding.btnPlayPause.requestFocus() }, 10)
+////                        binding.playerControlView.clearAnimation()
+////                        isControllerShown = true
+//                    }
+//                })
         }
 
         binding.stateExpanded.setOnClickListener {
 //            binding.stateExpanded.visibility = View.GONE
 //            binding.stateCollapsed.visibility = View.VISIBLE
 
-            showBottomCollapsedState()
-            fragmentListener.showExpandedState(AppConstants.FIRST_FRAGMENT)
             fragmentListener.hideBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
+            fragmentListener.showExpandedState(AppConstants.FIRST_FRAGMENT)
+            showBottomCollapsedState()
+            Handler().postDelayed({
+            }, 2000)
+
+            binding.stateExpanded.layoutAnimationListener = object :
+                Animation.AnimationListener {
+                override fun onAnimationStart(p0: Animation?) {
+                    Log.w("animation", "animation started")
+
+                }
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    Log.w("animation", "animation ended")
+
+                }
+
+                override fun onAnimationRepeat(p0: Animation?) {
+                }
+
+            }
+
+//            binding.stateExpanded.layoutTransition.addTransitionListener(object :
+//                LayoutTransition.TransitionListener {
+//                override fun startTransition(
+//                    p0: LayoutTransition?,
+//                    p1: ViewGroup?,
+//                    p2: View?,
+//                    p3: Int
+//                ) {
+//                    Log.w("animation", "animation started")
+//                }
+//
+//                override fun endTransition(
+//                    p0: LayoutTransition?,
+//                    p1: ViewGroup?,
+//                    p2: View?,
+//                    p3: Int
+//                ) {
+//                    Log.w("animation", "animation ended")
+//
+//                }
+//            })
+
+//            binding.stateExpanded.animate()
+//                .setListener(object : AnimatorListenerAdapter() {
+//                    override fun onAnimationEnd(animation: Animator?) {
+////                        super.onAnimationEnd(animation)
+//                        binding.stateExpanded.clearAnimation()
+//                        showBottomCollapsedState()
+////                        binding.stateCollapsed.visibility = View.VISIBLE
+////                        binding.stateExpanded.visibility = View.GONE
+//
+//
+////                        showBottomCollapsedState()
+//
+//                    }
+//                })
+
+
         }
     }
 
