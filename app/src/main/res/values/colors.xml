@@ -11,4 +11,16 @@
     <color name="color1">#47333f</color>
     <color name="color2">#7e7292</color>
     <color name="color3">#56698e</color>
+
+    <color name="color1Durations">#aca0a8</color>
+    <color name="color1Calculations">#806d78</color>
+    <color name="color1Selected">#422e3a</color>
+
+    <color name="color2Durations">#c5bbd3</color>
+    <color name="color2Calculations">#a69bb8</color>
+    <color name="color2Selected">#786C8C</color>
+
+    <color name="color3Durations">#bac7ec</color>
+    <color name="color3Calculations">#7e94b3</color>
+    <color name="color3Selected">#53658a</color>
 </resources>

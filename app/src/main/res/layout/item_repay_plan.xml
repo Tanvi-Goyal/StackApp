@@ -60,7 +60,7 @@
                 android:background="@drawable/dashed_line"
                 android:fontFamily="@font/gilroy_bold"
                 android:text="See calculations"
-                android:textColor="#806d78"
+                android:textColor="@color/color1Calculations"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintStart_toStartOf="@id/planDuration"
                 app:layout_constraintTop_toBottomOf="@id/planDuration" />
