@@ -27,7 +27,7 @@
                 android:fontFamily="@font/gilroy_bold"
                 android:text="how do you wish to repay?"
                 android:textColor="#8798a6"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="@dimen/_13ssp"
                 android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -67,16 +67,68 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:background="@drawable/bg_button"
                 android:fontFamily="@font/gilroy_bold"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingRight="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_10sdp"
                 android:text="Create your own plan"
                 android:textAllCaps="false"
                 android:textColor="#93a0b2"
-                android:paddingRight="@dimen/_15sdp"
-                android:paddingLeft="@dimen/_15sdp"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintStart_toStartOf="@id/recycler"
                 app:layout_constraintTop_toBottomOf="@id/recycler" />
+
+            <TextView
+                android:id="@+id/labelEMI"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_20sdp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="EMI"
+                android:textColor="#2e303a"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.35" />
+
+            <TextView
+                android:id="@+id/valueEMI"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:fontFamily="@font/gilroy_bold"
+                android:text="Rs. 4,,247 / mo"
+                android:textColor="#2f343e"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintStart_toStartOf="@id/labelEMI"
+                app:layout_constraintTop_toBottomOf="@id/labelEMI"
+                app:layout_constraintWidth_percent="0.35" />
+
+            <TextView
+                android:id="@+id/labelDuration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_20sdp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="duration"
+                android:textColor="#2e303a"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintStart_toEndOf="@id/labelEMI"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.35" />
+
+            <TextView
+                android:id="@+id/valueDuration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:fontFamily="@font/gilroy_bold"
+                android:text="12 months"
+                android:textColor="#2f343e"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintStart_toStartOf="@id/labelDuration"
+                app:layout_constraintTop_toBottomOf="@id/labelDuration"
+                app:layout_constraintWidth_percent="0.35" />
 
             <ImageView
                 android:id="@+id/imgExpand"
@@ -84,10 +136,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_30sdp"
                 android:src="@drawable/ic_baseline_expand_more_24"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/txtDescription"
+                app:layout_constraintBottom_toBottomOf="@id/valueEMI"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/labelEMI" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupUpperExpanded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="txtTitle, txtDescription, recycler, createPlan" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupUpperCollapsed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:constraint_referenced_ids="labelEMI, valueEMI,labelDuration, valueDuration, imgExpand" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

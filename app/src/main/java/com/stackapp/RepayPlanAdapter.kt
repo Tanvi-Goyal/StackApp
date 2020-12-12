@@ -39,7 +39,7 @@ class RepayPlanAdapter :
         fun bind(item: RepayModel) {
             binding.executePendingBindings()
             binding.card.setCardBackgroundColor(item.backgroubd)
-            binding.planAmount.text = itemView.resources.getString(R.string.Rs) + item.amount + " / mo"
+            binding.planAmount.text = itemView.resources.getString(R.string.Rs) + item.amount + " /mo"
             binding.planDuration.text = "for " + item.duration + " months"
         }
     }

@@ -10,7 +10,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/stateExpanded"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_300sdp"
+            android:layout_height="@dimen/_310sdp"
             android:background="@drawable/bg_third_fragment"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +25,7 @@
                 android:fontFamily="@font/gilroy_bold"
                 android:text="where should we send the money? "
                 android:textColor="#8798a6"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="@dimen/_13ssp"
                 android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -95,7 +95,7 @@
                 android:id="@+id/changeAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_25sdp"
                 android:background="@drawable/bg_button"
                 android:fontFamily="@font/gilroy_bold"
                 android:paddingLeft="@dimen/_15sdp"
