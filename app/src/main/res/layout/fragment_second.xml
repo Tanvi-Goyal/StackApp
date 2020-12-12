@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,6 +13,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/_380sdp"
             android:background="@drawable/bg_second_fragment"
+            android:elevation="@dimen/_100sdp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,10 +25,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_20sdp"
                 android:fontFamily="@font/gilroy_bold"
-                android:visibility="visible"
                 android:text="how do you wish to repay?"
                 android:textColor="#8798a6"
                 android:textSize="@dimen/_12ssp"
+                android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,13 +39,44 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginRight="@dimen/_50sdp"
                 android:fontFamily="@font/gilroy_medium"
-                android:visibility="visible"
                 android:text="choose one of our recommended plan or make your own"
                 android:textColor="#4a525a"
                 android:textSize="@dimen/_10ssp"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/txtTitle"
                 app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/txtDescription"
+                app:layout_constraintTop_toBottomOf="@id/txtDescription"
+                tools:listitem="@layout/item_repay_plan" />
+
+            <TextView
+                android:id="@+id/btnResume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/bg_button"
+                android:fontFamily="@font/gilroy_bold"
+                android:text="Create your own plan"
+                android:textAllCaps="false"
+                android:textColor="#93a0b2"
+                android:paddingRight="@dimen/_15sdp"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toStartOf="@id/recycler"
+                app:layout_constraintTop_toBottomOf="@id/recycler" />
 
             <ImageView
                 android:id="@+id/imgExpand"
@@ -63,10 +96,11 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
             android:background="@drawable/bg_bottom_collapsed"
+            android:elevation="@dimen/_40sdp"
             android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:id="@+id/txtCollapsedTitle"

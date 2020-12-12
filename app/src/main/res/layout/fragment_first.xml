@@ -10,6 +10,7 @@
             android:id="@+id/stateExpanded"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_450sdp"
+            android:elevation="@dimen/_40sdp"
             android:background="@drawable/bg_first_fragment"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
