@@ -128,7 +128,7 @@ class SecondFragment : Fragment() {
     fun showUpperCollapsedState() {
         isExpanded = false
         binding.imgExpand.visibility = View.VISIBLE
-        binding.card.visibility = View.INVISIBLE
+//        binding.card.visibility = View.INVISIBLE
     }
 
     fun showBottomCollapsedState() {
@@ -142,7 +142,7 @@ class SecondFragment : Fragment() {
         binding.stateCollapsed.visibility = View.GONE
         binding.stateExpanded.visibility = View.VISIBLE
         binding.imgExpand.visibility = View.GONE
-        binding.card.visibility = View.VISIBLE
+//        binding.card.visibility = View.VISIBLE
     }
 
     fun setFragmentListener(callback: FragmentListener) {
