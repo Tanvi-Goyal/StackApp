@@ -15,18 +15,18 @@
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:id="@+id/txtTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_20sdp"
-                android:text="Nikunj, how much do you need? "
-                android:textColor="@color/white"
-                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/gilroy_bold"
+                android:text="where should we send the money? "
+                android:textColor="#8798a6"
+                android:textSize="@dimen/_12ssp"
+                android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,26 +35,80 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_50sdp"
                 android:layout_marginRight="@dimen/_50sdp"
-                android:text="move the dial and set any amount you need upto Rs. 300000"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_10sdp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="amount will be credited to this bank account, EMI will also be debited from this bank account"
+                android:textColor="#4a525a"
+                android:textSize="@dimen/_10ssp"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/txtTitle"
                 app:layout_constraintTop_toBottomOf="@id/txtTitle" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="@dimen/_200sdp"
-                android:layout_height="@dimen/_200sdp"
+            <ImageView
+                android:id="@+id/imgBank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/_20sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/ic_bank"
+                app:layout_constraintStart_toStartOf="@id/txtDescription"
                 app:layout_constraintTop_toBottomOf="@id/txtDescription" />
+
+            <LinearLayout
+                android:id="@+id/layoutBankDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@id/imgBank"
+                app:layout_constraintStart_toEndOf="@id/imgBank"
+                app:layout_constraintTop_toTopOf="@id/imgBank">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:text="HDFC Bank"
+                    android:textColor="#fbedf7"
+                    android:textSize="@dimen/_10ssp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:text="50100117009192"
+                    android:textColor="#5a5f6e"
+                    android:textSize="@dimen/_11ssp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_check"
+                android:background="@drawable/bg_check"
+                app:layout_constraintTop_toTopOf="@id/imgBank"
+                app:layout_constraintBottom_toBottomOf="@id/imgBank"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="@dimen/_30sdp"/>
+
+            <TextView
+                android:id="@+id/changeAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/bg_button"
+                android:fontFamily="@font/gilroy_bold"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingRight="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="Change account"
+                android:textAllCaps="false"
+                android:textColor="#93a0b2"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toStartOf="@id/txtDescription"
+                app:layout_constraintTop_toBottomOf="@id/imgBank" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,18 +117,19 @@
             android:layout_height="@dimen/_50sdp"
             android:background="@drawable/bg_bottom_collapsed"
             android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:id="@+id/txtCollapsedTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_20sdp"
+                android:fontFamily="@font/gilroy_bold"
                 android:text="Select your bank acount "
-                android:textColor="@color/white"
-                android:textSize="@dimen/_12sdp"
+                android:textColor="#c6b7e5"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
