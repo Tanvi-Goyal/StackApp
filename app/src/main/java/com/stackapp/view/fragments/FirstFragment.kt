@@ -41,7 +41,6 @@ class FirstFragment : Fragment() {
     }
 
     fun showBottomCollapsedState() {
-
     }
 
     fun showExpandedState() {

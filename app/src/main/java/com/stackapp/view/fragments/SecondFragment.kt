@@ -5,14 +5,16 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.stackapp.view.interfaces.FragmentListener
 import com.stackapp.R
-import com.stackapp.model.RepayModel
-import com.stackapp.view.adapter.RepayPlanAdapter
 import com.stackapp.constants.AppConstants
 import com.stackapp.databinding.FragmentSecondBinding
+import com.stackapp.model.RepayModel
+import com.stackapp.view.adapter.RepayPlanAdapter
+import com.stackapp.view.interfaces.FragmentListener
 import java.util.*
 
 
@@ -39,12 +41,15 @@ class SecondFragment : Fragment() {
             showExpandedState()
             fragmentListener.showUpperCollapsedState(AppConstants.FIRST_FRAGMENT)
             fragmentListener.showBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
+
+            val slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_up)
+            binding.stateExpanded.startAnimation(slideUp)
         }
 
-        binding.stateExpanded.setOnClickListener {
+        binding.groupUpperCollapsed.setOnClickListener {
+            showBottomCollapsedState()
             fragmentListener.hideBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
             fragmentListener.showExpandedState(AppConstants.FIRST_FRAGMENT)
-            showBottomCollapsedState()
         }
     }
 
@@ -56,11 +61,21 @@ class SecondFragment : Fragment() {
 
     fun showBottomCollapsedState() {
         isExpanded = false
-        binding.stateExpanded.visibility = View.GONE
-        Handler().postDelayed({
-            binding.stateCollapsed.visibility = View.VISIBLE
-        }, 200)
+        val slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
+        binding.stateExpanded.startAnimation(slideDown)
+        slideDown.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(p0: Animation?) {
+            }
 
+            override fun onAnimationEnd(p0: Animation?) {
+                binding.stateExpanded.visibility = View.GONE
+                binding.stateCollapsed.visibility = View.VISIBLE
+            }
+
+            override fun onAnimationRepeat(p0: Animation?) {
+            }
+
+        })
     }
 
     fun showExpandedState() {
