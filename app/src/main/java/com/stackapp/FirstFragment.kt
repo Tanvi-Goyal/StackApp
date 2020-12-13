@@ -25,12 +25,9 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.stateExpanded.setOnClickListener {
-//            binding.stateExpanded.visibility = View.GONE
-//            binding.stateCollapsed.visibility = View.VISIBLE
-
+            showExpandedState()
             fragmentListener.hideBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
             fragmentListener.showBottomCollapsedState(AppConstants.SECOND_FRAGMENT)
-
         }
     }
 

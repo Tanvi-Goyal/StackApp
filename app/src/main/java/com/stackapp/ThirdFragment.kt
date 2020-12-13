@@ -1,6 +1,7 @@
 package com.stackapp
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,20 +27,14 @@ class ThirdFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.stateCollapsed.setOnClickListener {
-//            binding.stateCollapsed.visibility = View.GONE
-//            binding.stateExpanded.visibility = View.VISIBLE
-
             showExpandedState()
             fragmentListener.showUpperCollapsedState(AppConstants.SECOND_FRAGMENT)
 //            fragmentListener.showBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
         }
 
         binding.stateExpanded.setOnClickListener {
-//            binding.stateExpanded.visibility = View.GONE
-//            binding.stateCollapsed.visibility = View.VISIBLE
-
-            showBottomCollapsedState()
             fragmentListener.showExpandedState(AppConstants.SECOND_FRAGMENT)
+            showBottomCollapsedWithDelay()
 //            fragmentListener.hideBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
         }
     }
@@ -52,6 +47,14 @@ class ThirdFragment : Fragment() {
         isExpanded = false
         binding.stateExpanded.visibility = View.GONE
         binding.stateCollapsed.visibility = View.VISIBLE
+    }
+
+    fun showBottomCollapsedWithDelay() {
+        isExpanded = false
+        binding.stateExpanded.visibility = View.GONE
+        Handler().postDelayed({
+            binding.stateCollapsed.visibility = View.VISIBLE
+        }, 200)
     }
 
     fun showExpandedState() {
