@@ -4,4 +4,29 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Rs">\u20B9</string>
     <string name="amount">4,247 / mo</string>
+
+    <string name="how_much_do_you_need">nikunj, how much do you need?</string>
+    <string name="move_the_dial_instruction">move the dial and set any amount you need upto Rs. 487,391</string>
+    <string name="label_credit_amount">credit amount</string>
+    <string name="credit_amount">1,50,000</string>
+    <string name="txt_credit_insterest">10.4% monthly</string>
+    <string name="credit_description">stash is instant. money will be credited within seconds</string>
+    <string name="how_do_you_wish_to_repay">how do you wish to repay?</string>
+    <string name="choose_one_of_our_recommended_plan_or_make_your_own">choose one of our recommended plan or make your own</string>
+    <string name="create_your_own_plan">Create your own plan</string>
+    <string name="label_emi">EMI</string>
+    <string name="emi_amount">Rs. 4,,247 / mo</string>
+    <string name="label_duration">duration</string>
+    <string name="duration_amount">12 months</string>
+    <string name="proceed_to_emi_selection">Proceed to EMI selection</string>
+    <string name="where_should_we_send_the_money">where should we send the money?</string>
+    <string name="amount_credit_instructions">amount will be credited to this bank account, EMI will also be debited from this bank account</string>
+    <string name="bank_name">HDFC Bank</string>
+    <string name="bank_code">50100117009192</string>
+    <string name="change_account">Change account</string>
+    <string name="select_your_bank_acount">Select your bank account</string>
+    <string name="see_calculations">See calculations</string>
+    <string name="for_12_months">for 12 months</string>
+
+
 </resources>
