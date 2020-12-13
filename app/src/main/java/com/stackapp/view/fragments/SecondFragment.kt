@@ -1,7 +1,6 @@
 package com.stackapp.view.fragments
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import com.stackapp.databinding.FragmentSecondBinding
 import com.stackapp.model.RepayModel
 import com.stackapp.view.adapter.RepayPlanAdapter
 import com.stackapp.view.interfaces.FragmentListener
+import com.stackapp.view.interfaces.MyAnimatorListener
 import java.util.*
 
 
@@ -63,18 +63,11 @@ class SecondFragment : Fragment() {
         isExpanded = false
         val slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
         binding.stateExpanded.startAnimation(slideDown)
-        slideDown.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(p0: Animation?) {
-            }
-
+        slideDown.setAnimationListener(object : MyAnimatorListener() {
             override fun onAnimationEnd(p0: Animation?) {
                 binding.stateExpanded.visibility = View.GONE
                 binding.stateCollapsed.visibility = View.VISIBLE
             }
-
-            override fun onAnimationRepeat(p0: Animation?) {
-            }
-
         })
     }
 
