@@ -8,9 +8,9 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import com.stackapp.R
-import com.stackapp.view.interfaces.FragmentListener
 import com.stackapp.constants.AppConstants
 import com.stackapp.databinding.FragmentThirdBinding
+import com.stackapp.view.interfaces.FragmentListener
 import com.stackapp.view.interfaces.MyAnimatorListener
 
 class ThirdFragment : Fragment() {
@@ -36,37 +36,34 @@ class ThirdFragment : Fragment() {
 
             val slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_up)
             binding.stateExpanded.startAnimation(slideUp)
-//            fragmentListener.showBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
         }
 
 
         binding.stateExpanded.setOnClickListener {
-            showBottomCollapsedWithDelay()
+            showBottomCollapsedState()
             fragmentListener.showExpandedState(AppConstants.SECOND_FRAGMENT)
-//            fragmentListener.hideBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
         }
     }
 
     fun showUpperCollapsedState() {
-
     }
 
     fun showBottomCollapsedState() {
-        isExpanded = false
-        binding.stateExpanded.visibility = View.GONE
-        binding.stateCollapsed.visibility = View.VISIBLE
-    }
-
-    fun showBottomCollapsedWithDelay() {
-        isExpanded = false
-        val slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
-        binding.stateExpanded.startAnimation(slideDown)
-        slideDown.setAnimationListener(object : MyAnimatorListener() {
-            override fun onAnimationEnd(p0: Animation?) {
-                binding.stateExpanded.visibility = View.GONE
-                binding.stateCollapsed.visibility = View.VISIBLE
-            }
-        })
+        if (isExpanded) {
+            isExpanded = false
+            val slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
+            binding.stateExpanded.startAnimation(slideDown)
+            slideDown.setAnimationListener(object : MyAnimatorListener() {
+                override fun onAnimationEnd(p0: Animation?) {
+                    binding.stateExpanded.visibility = View.GONE
+                    binding.stateCollapsed.visibility = View.VISIBLE
+                }
+            })
+        } else {
+            isExpanded = false
+            binding.stateExpanded.visibility = View.GONE
+            binding.stateCollapsed.visibility = View.VISIBLE
+        }
     }
 
     fun showExpandedState() {

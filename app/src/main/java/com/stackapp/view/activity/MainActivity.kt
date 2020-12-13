@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), FragmentListener {
     override fun onBackPressed() {
         when {
             fragmentThree.isExpanded -> {
-                fragmentThree.showBottomCollapsedWithDelay()
+                fragmentThree.showBottomCollapsedState()
                 fragmentTwo.showExpandedState()
             }
             fragmentTwo.isExpanded -> {

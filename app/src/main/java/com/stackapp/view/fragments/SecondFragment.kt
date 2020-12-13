@@ -46,29 +46,35 @@ class SecondFragment : Fragment() {
             binding.stateExpanded.startAnimation(slideUp)
         }
 
-        binding.groupUpperCollapsed.setOnClickListener {
-            showBottomCollapsedState()
-            fragmentListener.hideBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
-            fragmentListener.showExpandedState(AppConstants.FIRST_FRAGMENT)
+        binding.stateExpanded.setOnClickListener {
+            if(binding.groupUpperCollapsed.visibility == View.VISIBLE) {
+                showExpandedState()
+                fragmentListener.showBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
+            } else {
+                showBottomCollapsedState()
+                fragmentListener.hideBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
+                fragmentListener.showExpandedState(AppConstants.FIRST_FRAGMENT)
+            }
         }
     }
 
     fun showUpperCollapsedState() {
-        isExpanded = false
         binding.groupUpperCollapsed.visibility = View.VISIBLE
         binding.groupUpperExpanded.visibility = View.GONE
     }
 
     fun showBottomCollapsedState() {
-        isExpanded = false
-        val slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
-        binding.stateExpanded.startAnimation(slideDown)
-        slideDown.setAnimationListener(object : MyAnimatorListener() {
-            override fun onAnimationEnd(p0: Animation?) {
-                binding.stateExpanded.visibility = View.GONE
-                binding.stateCollapsed.visibility = View.VISIBLE
-            }
-        })
+        if(isExpanded) {
+            isExpanded = false
+            val slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
+            binding.stateExpanded.startAnimation(slideDown)
+            slideDown.setAnimationListener(object : MyAnimatorListener() {
+                override fun onAnimationEnd(p0: Animation?) {
+                    binding.stateExpanded.visibility = View.GONE
+                    binding.stateCollapsed.visibility = View.VISIBLE
+                }
+            })
+        }
     }
 
     fun showExpandedState() {
