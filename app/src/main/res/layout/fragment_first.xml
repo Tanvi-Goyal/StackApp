@@ -10,8 +10,8 @@
             android:id="@+id/stateExpanded"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_450sdp"
-            android:elevation="@dimen/_40sdp"
             android:background="@drawable/bg_first_fragment"
+            android:elevation="@dimen/_40sdp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,14 +65,91 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <me.tankery.lib.circularseekbar.CircularSeekBar
+                    <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_margin="@dimen/_50sdp"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="@drawable/bg_view"
+                        android:layout_margin="@dimen/_24sdp"
+                        app:layout_constraintStart_toStartOf="@id/seekbar"
+                        app:layout_constraintTop_toTopOf="@id/seekbar"
+                        app:layout_constraintEnd_toEndOf="@id/seekbar"
+                        app:layout_constraintBottom_toBottomOf="@id/seekbar"/>
+
+                    <me.tankery.lib.circularseekbar.CircularSeekBar
+                        android:id="@+id/seekbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="@dimen/_20sdp"
+                        app:cs_circle_style = "round"
+                        app:cs_circle_x_radius = "@dimen/_20sdp"
+                        app:cs_circle_stroke_width = "@dimen/_10sdp"
+                        app:cs_pointer_stroke_width = "@dimen/_24sdp"
+                        app:cs_circle_color = "#ffe9e0"
+                        app:cs_circle_progress_color = "#dc886f"
+                        app:cs_pointer_color = "@color/black"
+                        app:cs_lock_enabled = "true"
+                        app:cs_disable_progress_glow = "false"
+                        app:cs_pointer_halo_width = "@dimen/_4sdp"
+                        app:cs_pointer_halo_color_ontouch = "#fbb7aa"
+                        app:layout_constraintBottom_toTopOf="@id/textCreditDescription"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/labelCredit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="credit amount"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textColor="#c0c0c0"
+                        android:textSize="@dimen/_10ssp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        app:layout_constraintStart_toStartOf="@id/seekbar"
+                        app:layout_constraintEnd_toEndOf="@id/seekbar"
+                        app:layout_constraintBottom_toTopOf="@id/valueCredit" />
+
+                    <TextView
+                        android:id="@+id/valueCredit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1,50,000"
+                        android:background="@drawable/dashed_line"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="@dimen/_14ssp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="@id/seekbar"
+                        app:layout_constraintEnd_toEndOf="@id/seekbar"
+                        app:layout_constraintTop_toTopOf="@id/seekbar"
+                        app:layout_constraintBottom_toBottomOf="@id/seekbar"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10.4% monthly"
+                        android:textSize="@dimen/_8ssp"
+                        android:fontFamily="@font/gilroy_medium"
+                        app:layout_constraintStart_toStartOf="@id/seekbar"
+                        app:layout_constraintEnd_toEndOf="@id/seekbar"
+                        app:layout_constraintTop_toBottomOf="@id/valueCredit"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:textColor="#99b297"/>
+
+                    <TextView
+                        android:id="@+id/textCreditDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:gravity="center"
+                        android:text="stash is instant. money will be credited within seconds"
+                        android:textColor="#c0c0c0"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
