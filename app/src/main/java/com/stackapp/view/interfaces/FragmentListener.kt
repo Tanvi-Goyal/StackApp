@@ -1,4 +1,4 @@
-package com.stackapp
+package com.stackapp.view.interfaces
 
 interface FragmentListener {
 

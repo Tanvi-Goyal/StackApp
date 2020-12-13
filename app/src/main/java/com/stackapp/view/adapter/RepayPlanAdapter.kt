@@ -1,6 +1,5 @@
-package com.stackapp
+package com.stackapp.view.adapter
 
-import android.graphics.drawable.GradientDrawable
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.Spanned
@@ -10,7 +9,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.stackapp.R
 import com.stackapp.databinding.ItemRepayPlanBinding
+import com.stackapp.model.RepayModel
 
 
 class RepayPlanAdapter :

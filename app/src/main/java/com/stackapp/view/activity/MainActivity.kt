@@ -1,15 +1,20 @@
-package com.stackapp
+package com.stackapp.view.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.stackapp.view.interfaces.FragmentListener
+import com.stackapp.R
+import com.stackapp.constants.AppConstants
 import com.stackapp.databinding.ActivityMainBinding
+import com.stackapp.view.fragments.SecondFragment
+import com.stackapp.view.fragments.FirstFragment
+import com.stackapp.view.fragments.ThirdFragment
 
 class MainActivity : AppCompatActivity(), FragmentListener {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: StackAdapter
 
     private var fragmentOne = FirstFragment()
     private var fragmentTwo = SecondFragment()

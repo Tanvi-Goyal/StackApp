@@ -1,14 +1,17 @@
-package com.stackapp
+package com.stackapp.view.fragments
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.stackapp.view.interfaces.FragmentListener
+import com.stackapp.R
+import com.stackapp.model.RepayModel
+import com.stackapp.view.adapter.RepayPlanAdapter
+import com.stackapp.constants.AppConstants
 import com.stackapp.databinding.FragmentSecondBinding
 import java.util.*
 

@@ -1,4 +1,4 @@
-package com.stackapp
+package com.stackapp.constants
 
 object AppConstants {
     const val FIRST_FRAGMENT = "first_fragment"

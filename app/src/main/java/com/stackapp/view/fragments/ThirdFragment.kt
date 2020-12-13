@@ -1,4 +1,4 @@
-package com.stackapp
+package com.stackapp.view.fragments
 
 import android.os.Bundle
 import android.os.Handler
@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.stackapp.databinding.FragmentSecondBinding
+import com.stackapp.view.interfaces.FragmentListener
+import com.stackapp.constants.AppConstants
 import com.stackapp.databinding.FragmentThirdBinding
 
 class ThirdFragment : Fragment() {
