@@ -45,15 +45,6 @@ class RepayPlanAdapter :
         }
     }
 
-    private fun getbackground(background: Int, itemView: View) : Int{
-        return when (background) {
-            itemView.resources.getColor(R.color.color1) -> itemView.resources.getColor(R.color.color1Selected)
-            itemView.resources.getColor(R.color.color2) -> itemView.resources.getColor(R.color.color2Selected)
-            itemView.resources.getColor(R.color.color3) -> itemView.resources.getColor(R.color.color3Selected)
-            else -> 0
-        }
-    }
-
     fun setData(list: ArrayList<RepayModel>) {
         this.list = list
         notifyDataSetChanged()
@@ -73,24 +64,12 @@ class RepayPlanAdapter :
         fun bind(item: RepayModel) {
             binding.executePendingBindings()
 
+            binding.card.setCardBackgroundColor(item.background)
             binding.selector.background = itemView.resources.getDrawable(R.drawable.repay_option_unselected)
             binding.selectPlan.visibility = View.GONE
 
-            binding.card.setCardBackgroundColor(item.background)
-            val string =
-                SpannableString(itemView.resources.getString(R.string.Rs) + item.amount + " /mo")
-            string.setSpan(RelativeSizeSpan(1.3f), 0, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            string.setSpan(
-                ForegroundColorSpan(getColorForCalculations(item.background)),
-                string.indexOf("/"), string.length,
-                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-            binding.planAmount.text = string
-
-            binding.planDuration.text = "for " + item.duration + " months"
-            binding.planDuration.setTextColor(getColorForDurations(item.background))
-            binding.txtSeeCalculations.setTextColor(getColorForCalculations(item.background))
-
+            setAmountPerMonth(itemView, binding, item)
+            setDurationAndCalculations(binding, item, itemView)
 //            (binding.txtSeeCalculations.background as GradientDrawable).setStroke(2, getColorForCalculations(item.background))
         }
 
@@ -99,23 +78,51 @@ class RepayPlanAdapter :
                 onItemClick?.invoke(list[adapterPosition], adapterPosition)
             }
         }
+    }
 
-        private fun getColorForCalculations(background: Int): Int {
-            return when (background) {
-                itemView.resources.getColor(R.color.color1) -> itemView.resources.getColor(R.color.color1Calculations)
-                itemView.resources.getColor(R.color.color2) -> itemView.resources.getColor(R.color.color2Calculations)
-                itemView.resources.getColor(R.color.color3) -> itemView.resources.getColor(R.color.color3Calculations)
-                else -> 0
-            }
+    private fun setAmountPerMonth(itemView: View, binding: ItemRepayPlanBinding, item: RepayModel) {
+        val string =
+            SpannableString(itemView.resources.getString(R.string.Rs) + item.amount + " /mo")
+        string.setSpan(RelativeSizeSpan(1.3f), 0, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        string.setSpan(
+            ForegroundColorSpan(getColorForCalculations(item.background, itemView)),
+            string.indexOf("/"), string.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        binding.planAmount.text = string
+
+    }
+
+    private fun setDurationAndCalculations(binding: ItemRepayPlanBinding, item: RepayModel, itemView: View) {
+        binding.planDuration.text = "for " + item.duration + " months"
+        binding.planDuration.setTextColor(getColorForDurations(item.background, itemView))
+        binding.txtSeeCalculations.setTextColor(getColorForCalculations(item.background, itemView))
+    }
+
+    private fun getBackground(background: Int, itemView: View) : Int{
+        return when (background) {
+            itemView.resources.getColor(R.color.color1) -> itemView.resources.getColor(R.color.color1Selected)
+            itemView.resources.getColor(R.color.color2) -> itemView.resources.getColor(R.color.color2Selected)
+            itemView.resources.getColor(R.color.color3) -> itemView.resources.getColor(R.color.color3Selected)
+            else -> 0
         }
+    }
 
-        private fun getColorForDurations(background: Int) : Int {
-            return when (background) {
-                itemView.resources.getColor(R.color.color1) -> itemView.resources.getColor(R.color.color1Durations)
-                itemView.resources.getColor(R.color.color2) -> itemView.resources.getColor(R.color.color2Durations)
-                itemView.resources.getColor(R.color.color3) -> itemView.resources.getColor(R.color.color3Durations)
-                else -> 0
-            }
+    private fun getColorForCalculations(background: Int, itemView: View): Int {
+        return when (background) {
+            itemView.resources.getColor(R.color.color1) -> itemView.resources.getColor(R.color.color1Calculations)
+            itemView.resources.getColor(R.color.color2) -> itemView.resources.getColor(R.color.color2Calculations)
+            itemView.resources.getColor(R.color.color3) -> itemView.resources.getColor(R.color.color3Calculations)
+            else -> 0
+        }
+    }
+
+    private fun getColorForDurations(background: Int, itemView: View) : Int {
+        return when (background) {
+            itemView.resources.getColor(R.color.color1) -> itemView.resources.getColor(R.color.color1Durations)
+            itemView.resources.getColor(R.color.color2) -> itemView.resources.getColor(R.color.color2Durations)
+            itemView.resources.getColor(R.color.color3) -> itemView.resources.getColor(R.color.color3Durations)
+            else -> 0
         }
     }
 }

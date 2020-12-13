@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity(), FragmentListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        setFragments()
+    }
+
+    private fun setFragments() {
         supportFragmentManager.beginTransaction()
             .add(binding.first.id, fragmentOne)
             .commit()
@@ -74,9 +78,6 @@ class MainActivity : AppCompatActivity(), FragmentListener {
                 fragmentThree.showBottomCollapsedState()
             }
         }
-
-        Activity().setResult(RESULT_OK, intent)
-        Activity().finish()
     }
 
     override fun showExpandedState(fragmentType: String) {
@@ -115,7 +116,5 @@ class MainActivity : AppCompatActivity(), FragmentListener {
             else -> super.onBackPressed()
 
         }
-
-
     }
 }

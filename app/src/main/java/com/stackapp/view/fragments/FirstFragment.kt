@@ -26,6 +26,10 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setExpandedStateListener()
+    }
+
+    private fun setExpandedStateListener() {
         binding.stateExpanded.setOnClickListener {
             showExpandedState()
             fragmentListener.hideBottomCollapsedState(AppConstants.THIRD_FRAGMENT)

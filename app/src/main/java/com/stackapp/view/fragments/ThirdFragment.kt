@@ -30,6 +30,11 @@ class ThirdFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setCollapsedStateListener()
+        setExpandedStateListener()
+    }
+
+    private fun setCollapsedStateListener() {
         binding.stateCollapsed.setOnClickListener {
             showExpandedState()
             fragmentListener.showUpperCollapsedState(AppConstants.SECOND_FRAGMENT)
@@ -37,8 +42,9 @@ class ThirdFragment : Fragment() {
             val slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_up)
             binding.stateExpanded.startAnimation(slideUp)
         }
+    }
 
-
+    private fun setExpandedStateListener() {
         binding.stateExpanded.setOnClickListener {
             showBottomCollapsedState()
             fragmentListener.showExpandedState(AppConstants.SECOND_FRAGMENT)

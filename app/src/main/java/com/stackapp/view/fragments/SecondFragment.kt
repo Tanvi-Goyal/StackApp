@@ -37,6 +37,11 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setRecycler()
+        setCollapsedStateListener()
+        setExpandedStateListener()
+    }
+
+    private fun setCollapsedStateListener() {
         binding.stateCollapsed.setOnClickListener {
             showExpandedState()
             fragmentListener.showUpperCollapsedState(AppConstants.FIRST_FRAGMENT)
@@ -45,7 +50,9 @@ class SecondFragment : Fragment() {
             val slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_up)
             binding.stateExpanded.startAnimation(slideUp)
         }
+    }
 
+    private fun setExpandedStateListener() {
         binding.stateExpanded.setOnClickListener {
             if(binding.groupUpperCollapsed.visibility == View.VISIBLE) {
                 showExpandedState()
@@ -56,11 +63,6 @@ class SecondFragment : Fragment() {
                 fragmentListener.showExpandedState(AppConstants.FIRST_FRAGMENT)
             }
         }
-    }
-
-    fun showUpperCollapsedState() {
-        binding.groupUpperCollapsed.visibility = View.VISIBLE
-        binding.groupUpperExpanded.visibility = View.GONE
     }
 
     fun showBottomCollapsedState() {
@@ -75,6 +77,11 @@ class SecondFragment : Fragment() {
                 }
             })
         }
+    }
+
+    fun showUpperCollapsedState() {
+        binding.groupUpperCollapsed.visibility = View.VISIBLE
+        binding.groupUpperExpanded.visibility = View.GONE
     }
 
     fun showExpandedState() {
