@@ -19,14 +19,24 @@
             android:paddingRight="@dimen/_30sdp"
             android:paddingBottom="@dimen/_20sdp">
 
+            <View
+                android:id="@+id/selector"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:background="@drawable/repay_option_unselected"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/selectPlan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/black"
-                android:src="@drawable/ic_baseline_expand_more_24"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:src="@drawable/ic_check"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/selector"
+                app:layout_constraintEnd_toEndOf="@id/selector"
+                app:layout_constraintStart_toStartOf="@id/selector"
+                app:layout_constraintTop_toTopOf="@id/selector" />
 
             <TextView
                 android:id="@+id/planAmount"
@@ -38,7 +48,7 @@
                 android:textColor="#fbedf7"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/selectPlan" />
+                app:layout_constraintTop_toBottomOf="@id/selector" />
 
             <TextView
                 android:id="@+id/planDuration"

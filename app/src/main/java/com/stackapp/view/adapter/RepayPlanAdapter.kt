@@ -6,6 +6,7 @@ import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +19,8 @@ class RepayPlanAdapter :
     RecyclerView.Adapter<RepayPlanAdapter.TestsViewHolder>() {
 
     private var list = ArrayList<RepayModel>()
-    var onItemClick: ((RepayModel) -> Unit)? = null
+    var onItemClick: ((RepayModel, Int) -> Unit)? = null
+    var selectedItem = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestsViewHolder {
         val binding: ItemRepayPlanBinding = DataBindingUtil.inflate(
@@ -33,6 +35,23 @@ class RepayPlanAdapter :
 
     override fun onBindViewHolder(holder: TestsViewHolder, position: Int) {
         holder.bind(list[position])
+
+        if (position == selectedItem) {
+            holder.binding.selector.background = holder.itemView.resources.getDrawable(R.drawable.repay_option_selected)
+            holder.binding.selectPlan.visibility = View.VISIBLE
+        } else {
+            holder.binding.selector.background = holder.itemView.resources.getDrawable(R.drawable.repay_option_unselected)
+            holder.binding.selectPlan.visibility = View.GONE
+        }
+    }
+
+    private fun getbackground(background: Int, itemView: View) : Int{
+        return when (background) {
+            itemView.resources.getColor(R.color.color1) -> itemView.resources.getColor(R.color.color1Selected)
+            itemView.resources.getColor(R.color.color2) -> itemView.resources.getColor(R.color.color2Selected)
+            itemView.resources.getColor(R.color.color3) -> itemView.resources.getColor(R.color.color3Selected)
+            else -> 0
+        }
     }
 
     fun setData(list: ArrayList<RepayModel>) {
@@ -40,11 +59,23 @@ class RepayPlanAdapter :
         notifyDataSetChanged()
     }
 
+    fun updateSelectedPosition(selected: Int) {
+        val previousItem = selectedItem
+        selectedItem = selected
+
+        notifyItemChanged(previousItem)
+        notifyItemChanged(selected)
+    }
+
     inner class TestsViewHolder(var binding: ItemRepayPlanBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: RepayModel) {
             binding.executePendingBindings()
+
+            binding.selector.background = itemView.resources.getDrawable(R.drawable.repay_option_unselected)
+            binding.selectPlan.visibility = View.GONE
+
             binding.card.setCardBackgroundColor(item.background)
             val string =
                 SpannableString(itemView.resources.getString(R.string.Rs) + item.amount + " /mo")
@@ -61,6 +92,12 @@ class RepayPlanAdapter :
             binding.txtSeeCalculations.setTextColor(getColorForCalculations(item.background))
 
 //            (binding.txtSeeCalculations.background as GradientDrawable).setStroke(2, getColorForCalculations(item.background))
+        }
+
+        init {
+            binding.selector.setOnClickListener {
+                onItemClick?.invoke(list[adapterPosition], adapterPosition)
+            }
         }
 
         private fun getColorForCalculations(background: Int): Int {

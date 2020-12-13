@@ -85,6 +85,10 @@ class SecondFragment : Fragment() {
         binding.recycler.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         adapter.setData(createData())
+
+        adapter.onItemClick = { model, position ->
+            adapter.updateSelectedPosition(position)
+        }
     }
 
     private fun createData(): ArrayList<RepayModel> {
