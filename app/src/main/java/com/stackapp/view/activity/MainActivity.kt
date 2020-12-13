@@ -1,16 +1,17 @@
 package com.stackapp.view.activity
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.stackapp.view.interfaces.FragmentListener
 import com.stackapp.R
 import com.stackapp.constants.AppConstants
 import com.stackapp.databinding.ActivityMainBinding
-import com.stackapp.view.fragments.SecondFragment
 import com.stackapp.view.fragments.FirstFragment
+import com.stackapp.view.fragments.SecondFragment
 import com.stackapp.view.fragments.ThirdFragment
+import com.stackapp.view.interfaces.FragmentListener
 
 class MainActivity : AppCompatActivity(), FragmentListener {
 
@@ -24,7 +25,6 @@ class MainActivity : AppCompatActivity(), FragmentListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-
         supportFragmentManager.beginTransaction()
             .add(binding.first.id, fragmentOne)
             .commit()
@@ -35,25 +35,7 @@ class MainActivity : AppCompatActivity(), FragmentListener {
 
         supportFragmentManager.beginTransaction()
             .add(binding.third.id, fragmentThree)
-            .addToBackStack("third").commit()
-        /*
-        Tasks
-        1. ist fragment in expanded view
-        2. on click of 2nd collapsed view ->
-            slide up and expand with animation
-            collapse 1st view on animation end of 2nd view
-            show 3rd collapsed view
-        3. on click of 3rd collapsed view
-            slide up and expand wt=ith animation
-            collapse 2nd view on animation end of 3rd view
-            show 4th collapsed view
-        4. on Click 3rd expanded view
-            3rd view has to collapse
-            2nd view to show loading view till 3rd view animation end
-            2nd view to show expanded state on animation end
-        5. All view are expanded and click on 2nd view
-            animate 3rd view and collapse
-         */
+            .commit()
     }
 
     override fun onAttachFragment(fragment: Fragment) {
@@ -92,6 +74,9 @@ class MainActivity : AppCompatActivity(), FragmentListener {
                 fragmentThree.showBottomCollapsedState()
             }
         }
+
+        Activity().setResult(RESULT_OK, intent)
+        Activity().finish()
     }
 
     override fun showExpandedState(fragmentType: String) {
@@ -127,9 +112,10 @@ class MainActivity : AppCompatActivity(), FragmentListener {
             fragmentOne.isExpanded -> {
                 super.onBackPressed()
             }
+            else -> super.onBackPressed()
+
         }
 
-//        super.onBackPressed()
 
     }
 }
