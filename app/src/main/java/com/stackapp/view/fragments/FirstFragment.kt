@@ -10,6 +10,7 @@ import com.stackapp.constants.AppConstants
 import com.stackapp.databinding.FragmentFirstBinding
 import com.stackapp.view.interfaces.FragmentListener
 import me.tankery.lib.circularseekbar.CircularSeekBar
+import kotlin.math.roundToInt
 
 class FirstFragment : Fragment() {
 
@@ -47,7 +48,7 @@ class FirstFragment : Fragment() {
                 progress: Float,
                 fromUser: Boolean
             ) {
-                binding.valueCredit.text = resources.getString(R.string.Rs) + progress.toString()
+                binding.valueCredit.text = resources.getString(R.string.Rs) + progress.roundToInt().toString()
             }
 
             override fun onStopTrackingTouch(seekBar: CircularSeekBar?) {
