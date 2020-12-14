@@ -1,5 +1,6 @@
 package com.stackapp.view.adapter
 
+import android.graphics.drawable.GradientDrawable
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.Spanned
@@ -37,10 +38,8 @@ class RepayPlanAdapter :
         holder.bind(list[position])
 
         if (position == selectedItem) {
-            holder.binding.selector.background = holder.itemView.resources.getDrawable(R.drawable.repay_option_selected)
             holder.binding.selectPlan.visibility = View.VISIBLE
         } else {
-            holder.binding.selector.background = holder.itemView.resources.getDrawable(R.drawable.repay_option_unselected)
             holder.binding.selectPlan.visibility = View.GONE
         }
     }
@@ -65,12 +64,10 @@ class RepayPlanAdapter :
             binding.executePendingBindings()
 
             binding.card.setCardBackgroundColor(item.background)
-            binding.selector.background = itemView.resources.getDrawable(R.drawable.repay_option_unselected)
-            binding.selectPlan.visibility = View.GONE
+            setUnselectedState(binding, itemView, item)
 
             setAmountPerMonth(itemView, binding, item)
             setDurationAndCalculations(binding, item, itemView)
-//            (binding.txtSeeCalculations.background as GradientDrawable).setStroke(2, getColorForCalculations(item.background))
         }
 
         init {
@@ -78,6 +75,17 @@ class RepayPlanAdapter :
                 onItemClick?.invoke(list[adapterPosition], adapterPosition)
             }
         }
+    }
+
+    private fun setUnselectedState(
+        binding: ItemRepayPlanBinding,
+        itemView: View,
+        item: RepayModel
+    ) {
+        (binding.selector.background as GradientDrawable).setStroke(
+            2, getColorForCalculations(item.background, itemView)
+        )
+        binding.selectPlan.visibility = View.GONE
     }
 
     private fun setAmountPerMonth(itemView: View, binding: ItemRepayPlanBinding, item: RepayModel) {
@@ -93,13 +101,17 @@ class RepayPlanAdapter :
 
     }
 
-    private fun setDurationAndCalculations(binding: ItemRepayPlanBinding, item: RepayModel, itemView: View) {
+    private fun setDurationAndCalculations(
+        binding: ItemRepayPlanBinding,
+        item: RepayModel,
+        itemView: View
+    ) {
         binding.planDuration.text = "for " + item.duration + " months"
         binding.planDuration.setTextColor(getColorForDurations(item.background, itemView))
         binding.txtSeeCalculations.setTextColor(getColorForCalculations(item.background, itemView))
     }
 
-    private fun getBackground(background: Int, itemView: View) : Int{
+    private fun getBackground(background: Int, itemView: View): Int {
         return when (background) {
             itemView.resources.getColor(R.color.color1) -> itemView.resources.getColor(R.color.color1Selected)
             itemView.resources.getColor(R.color.color2) -> itemView.resources.getColor(R.color.color2Selected)
@@ -117,7 +129,7 @@ class RepayPlanAdapter :
         }
     }
 
-    private fun getColorForDurations(background: Int, itemView: View) : Int {
+    private fun getColorForDurations(background: Int, itemView: View): Int {
         return when (background) {
             itemView.resources.getColor(R.color.color1) -> itemView.resources.getColor(R.color.color1Durations)
             itemView.resources.getColor(R.color.color2) -> itemView.resources.getColor(R.color.color2Durations)

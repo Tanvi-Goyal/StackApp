@@ -23,4 +23,7 @@
     <color name="color3Durations">#bac7ec</color>
     <color name="color3Calculations">#7e94b3</color>
     <color name="color3Selected">#53658a</color>
+
+    <color name="transparent">#00000000</color>
+
 </resources>

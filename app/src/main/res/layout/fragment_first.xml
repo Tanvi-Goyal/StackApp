@@ -93,7 +93,7 @@
                         app:cs_pointer_halo_color_ontouch="#fbb7aa"
                         app:cs_pointer_halo_width="@dimen/_4sdp"
                         app:cs_pointer_stroke_width="@dimen/_24sdp"
-                        app:cs_progress="30"
+                        app:cs_progress="150000"
                         app:layout_constraintBottom_toTopOf="@id/textCreditDescription"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
