@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.stackapp.R
@@ -62,6 +63,10 @@ class SecondFragment : Fragment() {
                 fragmentListener.hideBottomCollapsedState(AppConstants.THIRD_FRAGMENT)
                 fragmentListener.showExpandedState(AppConstants.FIRST_FRAGMENT)
             }
+        }
+
+        binding.createPlan.setOnClickListener {
+            Toast.makeText(requireContext(), "Create your own plan", Toast.LENGTH_SHORT).show()
         }
     }
 

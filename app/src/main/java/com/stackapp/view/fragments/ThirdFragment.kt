@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.stackapp.R
 import com.stackapp.constants.AppConstants
@@ -48,6 +49,10 @@ class ThirdFragment : Fragment() {
         binding.stateExpanded.setOnClickListener {
             showBottomCollapsedState()
             fragmentListener.showExpandedState(AppConstants.SECOND_FRAGMENT)
+        }
+
+        binding.changeAccount.setOnClickListener {
+            Toast.makeText(requireContext(), "Change account", Toast.LENGTH_SHORT).show()
         }
     }
 
