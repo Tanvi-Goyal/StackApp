@@ -6,7 +6,7 @@
     <string name="amount">4,247 / mo</string>
 
     <string name="how_much_do_you_need">nikunj, how much do you need?</string>
-    <string name="move_the_dial_instruction">move the dial and set any amount you need upto Rs. 487,391</string>
+    <string name="move_the_dial_instruction">move the dial and set any amount you need upto *rs* 487,391</string>
     <string name="label_credit_amount">credit amount</string>
     <string name="credit_amount">1,50,000</string>
     <string name="txt_credit_insterest">10.4% monthly</string>

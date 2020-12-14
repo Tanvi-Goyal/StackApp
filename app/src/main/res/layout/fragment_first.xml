@@ -88,6 +88,7 @@
                         app:cs_circle_x_radius="@dimen/_20sdp"
                         app:cs_disable_progress_glow="false"
                         app:cs_lock_enabled="true"
+                        app:cs_max = "487391"
                         app:cs_pointer_color="@color/black"
                         app:cs_pointer_halo_color_ontouch="#fbb7aa"
                         app:cs_pointer_halo_width="@dimen/_4sdp"
